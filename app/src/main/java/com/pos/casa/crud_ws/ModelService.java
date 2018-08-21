@@ -16,8 +16,9 @@ public interface ModelService {
 
     //get passando parametro
     @GET("api/v1.0/{model}/json")
-    Call<Model> getAllPersons(@Path("model") String model);
+    Call<Pessoa> getAllPersons(@Path("model") String p1, String p2);
 
+    /*
     @POST("api/v1.0/{model}/json")
     Call<Model> createPerson(@Path("model") Model model);
 
@@ -26,6 +27,6 @@ public interface ModelService {
 
     @DELETE("api/v1.0/{model}/json")
     Call<Model> deletePerson(@Path("model") Model model);
-
+    */
 
 }

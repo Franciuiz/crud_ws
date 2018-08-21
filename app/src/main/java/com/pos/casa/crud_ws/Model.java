@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Model {
 
-    private String model;
 
     @JsonProperty("firstName")
     private String firstName;
@@ -15,20 +14,12 @@ public class Model {
 
     @Override
     public String toString() {
-        return "Model{" +
-                "model='" + model + '\'' +
+        return "Pessoa{" +
                 ", nome='" + firstName + '\'' +
                 ", sobrenome='" + lastName + '\'' +
                 '}';
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
 
     public String getFirstName() {
         return firstName;
