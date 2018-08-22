@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <EditText
@@ -13,9 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
         android:ems="10"
         android:hint="Nome"
         android:inputType="textPersonName" />
@@ -30,47 +27,58 @@
         android:hint="Sobrenome"
         android:inputType="textPersonName" />
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText1"
-        android:layout_below="@+id/editText2"
-        android:ems="10"
-        android:hint="Endereço"
-        android:inputType="textPersonName" />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText1"
-        android:layout_below="@+id/editText3"
-        android:ems="10"
-        android:hint="Telefone"
-        android:inputType="textPersonName" />
+        <RadioButton
+            android:id="@+id/radioButtonListar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Listar" />
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText1"
-        android:layout_below="@+id/editText4"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textPersonName" />
+        <RadioButton
+            android:id="@+id/radioButtonCadastrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cadastrar" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Insira o ID aqui"
+            android:inputType="textPersonName" />
+
+        <RadioButton
+            android:id="@+id/radioButtonAlterar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Alterar" />
+
+        <RadioButton
+            android:id="@+id/radioButtonDeletar"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Deletar" />
+    </RadioGroup>
 
     <Button
-        android:id="@+id/bListar"
+        android:id="@+id/bIr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/editText1"
         android:layout_centerVertical="true"
-        android:text="Listar" />
+        android:text="Ir" />
 
     <TextView
         android:id="@+id/tResposta"
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="242dp"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/editText1"
@@ -78,29 +86,4 @@
         android:hint="Resposta HTTP"
         android:padding="15dp" />
 
-    <Button
-        android:id="@+id/bCadastrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/bListar"
-        android:text="Cadastrar" />
-
-    <Button
-        android:id="@+id/bAlterar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/bCadastrar"
-        android:text="Alterar" />
-
-    <Button
-        android:id="@+id/bDeletar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/bAlterar"
-        android:text="Deletar" />
-
-</RelativeLayout
-   >
+</LinearLayout>

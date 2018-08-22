@@ -6,8 +6,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 import retrofit2.Call;
@@ -25,35 +26,70 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText editTextFirstName = findViewById(R.id.editText1);
         final EditText editTextLastName = findViewById(R.id.editText2);
+        final EditText editTextId = findViewById(R.id.editText3);
 
-        Button buttonListar = findViewById(R.id.bListar);
-        //Button buttonCadastrar = findViewById(R.id.bCadastrar);
-        //Button buttonAlterar = findViewById(R.id.bAlterar);
-        //Button buttonDeletar = findViewById(R.id.bDeletar);
+        final Persons pessoa = new Persons(editTextFirstName.getText().toString(), editTextLastName.getText().toString());
+
+        Button buttonIr = findViewById(R.id.bIr);
+
+        final RadioButton listar = findViewById(R.id.radioButtonListar);
+        final RadioButton cadastrar = findViewById(R.id.radioButtonCadastrar);
+        final RadioButton alterar = findViewById(R.id.radioButtonAlterar);
+        final RadioButton deletar = findViewById(R.id.radioButtonDeletar);
+
 
         final TextView textViewResposta = findViewById(R.id.tResposta);
 
 
-        //@GET ALL Implementação do botao
-        buttonListar.setOnClickListener(new View.OnClickListener() {
+
+        buttonIr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                //apenas pra inicializar a variavel (nao achei outra forma)
+                Call<Persons> call = new RetrofitConfig().getModelService().getAllPersons();
 
-                Call<Model> call = new RetrofitConfig().getModelService().getAllPersons();
+                if (listar.isChecked()){
 
-                //Call<Model> call = new RetrofitConfig().getModelService().getAllPersons(id.getText().toString());
+                    textViewResposta.setText("listar");
+                    call = new RetrofitConfig().getModelService().getAllPersons();
+
+                }
+                if (cadastrar.isChecked()){
+
+                    textViewResposta.setText("cadastrar");
+                    call = new RetrofitConfig().getModelService().createPerson(pessoa);
+
+                }
+                else if (alterar.isChecked()){
+
+                    textViewResposta.setText("alterar");
+                    call = new RetrofitConfig().getModelService().updatePerson(
+                            editTextId.getText().toString(), pessoa);
+
+                }
+                else if(deletar.isChecked()){
+
+                    textViewResposta.setText("deletar");
+                    call = new RetrofitConfig().getModelService().deletePerson(editTextId.getText().toString());
+
+                }
 
 
-                call.enqueue(new Callback<Model>() {
+                //Call<Persons> call = new RetrofitConfig().getModelService().getAllPersons();
+
+                //Call<Persons> call = new RetrofitConfig().getModelService().getAllPersons(id.getText().toString());
+
+
+                call.enqueue(new Callback<Persons>() {
                     @Override
-                    public void onResponse(Call<Model> call, Response<Model> response) {
-                        Model model = response.body();
-                        textViewResposta.setText(model.toString());
+                    public void onResponse(Call<Persons> call, Response<Persons> response) {
+                        Persons persons = response.body();
+                        textViewResposta.setText(persons.toString());
                     }
 
                     @Override
-                    public void onFailure(Call<Model> call, Throwable t) {
+                    public void onFailure(Call<Persons> call, Throwable t) {
                         Log.e("ModelService   ", "Falha ao buscar" + t.getMessage());
                     }
                 });

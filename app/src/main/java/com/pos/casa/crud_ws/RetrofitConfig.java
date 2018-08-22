@@ -11,7 +11,7 @@ public class RetrofitConfig {
         this.retrofit = new Retrofit.Builder()
 
                 //Trocar pela url local
-                .baseUrl("http://localhost:8080/")
+                .baseUrl("http://localhost:8080/api/v1.0/")
 
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();

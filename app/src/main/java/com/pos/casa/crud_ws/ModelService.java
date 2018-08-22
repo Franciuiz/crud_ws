@@ -1,32 +1,32 @@
 package com.pos.casa.crud_ws;
 
+import android.app.Person;
+
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
 
 public interface ModelService {
 
     //get all
-    @GET("api/v1.0/persons")
-    Call<Model> getAllPersons();
+    @GET("persons")
+    Call<Persons> getAllPersons();
 
     //get passando parametro
-    //@GET("api/v1.0/persons/{id}")
-    //Call<Model> getAllPersons(@Path("id") String p1, String p2);
+    @GET("persons/{id}")
+    Call<Persons> getPersons(@Path("id") String id);
 
-    /*
-    @POST("api/v1.0/{id}/json")
-    Call<Model> createPerson(@Path("id") Model model);
+    @POST("persons")
+    Call<Persons> createPerson(@Path("id") Persons persons);
 
-    @PUT("api/v1.0/{id}/json")
-    Call<Model> updatePerson(@Path("id") Model model);
+    @PUT("persons/{id}")
+    Call<Persons> updatePerson(@Path("id") String id, Persons persons);
 
-    @DELETE("api/v1.0/{id}/json")
-    Call<Model> deletePerson(@Path("id") Model model);
-    */
+    @DELETE("persons/{id}")
+    Call<Persons> deletePerson(@Path("id") String id);
+
 
 }
