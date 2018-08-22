@@ -17,8 +17,8 @@
         android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:text="Nome" />
+        android:hint="Nome"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editText2"
@@ -27,8 +27,8 @@
         android:layout_alignStart="@+id/editText1"
         android:layout_below="@+id/editText1"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:text="Sobrenome" />
+        android:hint="Sobrenome"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editText3"
@@ -37,8 +37,8 @@
         android:layout_alignStart="@+id/editText1"
         android:layout_below="@+id/editText2"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:text="Endereço" />
+        android:hint="Endereço"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editText4"
@@ -47,8 +47,8 @@
         android:layout_alignStart="@+id/editText1"
         android:layout_below="@+id/editText3"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:text="Telefone" />
+        android:hint="Telefone"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editText5"
@@ -57,8 +57,8 @@
         android:layout_alignStart="@+id/editText1"
         android:layout_below="@+id/editText4"
         android:ems="10"
-        android:inputType="textPersonName"
-        tools:text="Email" />
+        android:hint="Email"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/bListar"
@@ -75,7 +75,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/editText1"
         android:layout_marginBottom="46dp"
-        android:text="Resposta HTTP" />
+        android:hint="Resposta HTTP"
+        android:padding="15dp" />
 
     <Button
         android:id="@+id/bCadastrar"

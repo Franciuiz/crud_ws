@@ -15,8 +15,8 @@ public class Model {
     @Override
     public String toString() {
         return "Pessoa{" +
-                ", nome='" + firstName + '\'' +
-                ", sobrenome='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
 

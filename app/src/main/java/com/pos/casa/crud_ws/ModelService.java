@@ -11,22 +11,22 @@ import retrofit2.http.Query;
 public interface ModelService {
 
     //get all
-    //@GET("api/v1.0/{model}/json")
-    //Call<Model> getAllPersons(@Path("model") String model);
+    @GET("api/v1.0/persons")
+    Call<Model> getAllPersons();
 
     //get passando parametro
-    @GET("api/v1.0/{model}/json")
-    Call<Pessoa> getAllPersons(@Path("model") String p1, String p2);
+    //@GET("api/v1.0/persons/{id}")
+    //Call<Model> getAllPersons(@Path("id") String p1, String p2);
 
     /*
-    @POST("api/v1.0/{model}/json")
-    Call<Model> createPerson(@Path("model") Model model);
+    @POST("api/v1.0/{id}/json")
+    Call<Model> createPerson(@Path("id") Model model);
 
-    @PUT("api/v1.0/{model}/json")
-    Call<Model> updatePerson(@Path("model") Model model);
+    @PUT("api/v1.0/{id}/json")
+    Call<Model> updatePerson(@Path("id") Model model);
 
-    @DELETE("api/v1.0/{model}/json")
-    Call<Model> deletePerson(@Path("model") Model model);
+    @DELETE("api/v1.0/{id}/json")
+    Call<Model> deletePerson(@Path("id") Model model);
     */
 
 }
