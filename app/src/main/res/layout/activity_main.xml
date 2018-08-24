@@ -32,11 +32,11 @@
         android:layout_height="wrap_content">
 
         <RadioButton
-            android:id="@+id/radioButtonListar"
+            android:id="@+id/radioButtonListarTudo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Listar" />
+            android:text="Listar Tudo" />
 
         <RadioButton
             android:id="@+id/radioButtonCadastrar"
@@ -53,6 +53,13 @@
             android:ems="10"
             android:hint="Insira o ID aqui"
             android:inputType="textPersonName" />
+
+        <RadioButton
+            android:id="@+id/radioButtonListar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Listar" />
 
         <RadioButton
             android:id="@+id/radioButtonAlterar"
@@ -76,14 +83,26 @@
         android:layout_centerVertical="true"
         android:text="Ir" />
 
-    <TextView
-        android:id="@+id/tResposta"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="242dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/editText1"
-        android:layout_marginBottom="46dp"
-        android:hint="Resposta HTTP"
-        android:padding="15dp" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tResposta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/editText1"
+                android:layout_marginBottom="46dp"
+                android:hint="Resposta HTTP"
+                android:padding="15dp"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -28,10 +28,9 @@ public class MainActivity extends AppCompatActivity {
         final EditText editTextLastName = findViewById(R.id.editText2);
         final EditText editTextId = findViewById(R.id.editText3);
 
-        final Persons pessoa = new Persons(editTextFirstName.getText().toString(), editTextLastName.getText().toString());
-
         Button buttonIr = findViewById(R.id.bIr);
 
+        final RadioButton listarTudo = findViewById(R.id.radioButtonListarTudo);
         final RadioButton listar = findViewById(R.id.radioButtonListar);
         final RadioButton cadastrar = findViewById(R.id.radioButtonCadastrar);
         final RadioButton alterar = findViewById(R.id.radioButtonAlterar);
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView textViewResposta = findViewById(R.id.tResposta);
 
-
+        final Persons persons = new Persons();
 
         buttonIr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,43 +48,48 @@ public class MainActivity extends AppCompatActivity {
                 //apenas pra inicializar a variavel (nao achei outra forma)
                 Call<Persons> call = new RetrofitConfig().getModelService().getAllPersons();
 
-                if (listar.isChecked()){
+                if (listarTudo.isChecked()){
 
-                    textViewResposta.setText("listar");
                     call = new RetrofitConfig().getModelService().getAllPersons();
 
                 }
-                if (cadastrar.isChecked()){
+                else if (listar.isChecked()){
 
-                    textViewResposta.setText("cadastrar");
-                    call = new RetrofitConfig().getModelService().createPerson(pessoa);
+                    call = new RetrofitConfig().getModelService().getPersons((long) Integer.parseInt(editTextId.getText().toString()));
+
+                }
+                else if (cadastrar.isChecked()){
+
+
+                    persons.setFirstName(editTextFirstName.getText().toString());
+                    persons.setLastName(editTextLastName.getText().toString());
+
+                    call = new RetrofitConfig().getModelService().createPerson(persons);
+                    Toast.makeText(getBaseContext(),  editTextFirstName.getText().toString() +"Cadastrado com sucesso", Toast.LENGTH_LONG).show();
 
                 }
                 else if (alterar.isChecked()){
 
-                    textViewResposta.setText("alterar");
-                    call = new RetrofitConfig().getModelService().updatePerson(
-                            editTextId.getText().toString(), pessoa);
+                    persons.setFirstName(editTextFirstName.getText().toString());
+                    persons.setLastName(editTextLastName.getText().toString());
+
+                    call = new RetrofitConfig().getModelService().updatePerson((long) Integer.parseInt(editTextId.getText().toString()),persons);
+                    Toast.makeText(getBaseContext(), "Item "+ editTextId.getText().toString() +"Alterado com sucesso", Toast.LENGTH_LONG).show();
 
                 }
                 else if(deletar.isChecked()){
 
-                    textViewResposta.setText("deletar");
-                    call = new RetrofitConfig().getModelService().deletePerson(editTextId.getText().toString());
+                    call = new RetrofitConfig().getModelService().deletePerson((long) Integer.parseInt(editTextId.getText().toString()));
+                    Toast.makeText(getBaseContext(), "Item "+ editTextId.getText().toString() +"Deletado com sucesso", Toast.LENGTH_LONG).show();
 
                 }
-
-
-                //Call<Persons> call = new RetrofitConfig().getModelService().getAllPersons();
-
-                //Call<Persons> call = new RetrofitConfig().getModelService().getAllPersons(id.getText().toString());
 
 
                 call.enqueue(new Callback<Persons>() {
                     @Override
                     public void onResponse(Call<Persons> call, Response<Persons> response) {
-                        Persons persons = response.body();
-                        textViewResposta.setText(persons.toString());
+                        Persons p = response.body();
+                        textViewResposta.setText(p.toString());
                     }
 
                     @Override
