@@ -2,6 +2,8 @@ package com.pos.casa.crud_ws;
 
 import android.app.Person;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -17,7 +19,7 @@ public interface ModelService {
 
     //get all
     @GET("persons")
-    Call<Persons> getAllPersons();
+    Call<List<Persons>> getAllPersons();
 
     //get passando parametro
     @GET("persons/{id}")

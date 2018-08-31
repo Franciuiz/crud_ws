@@ -12,7 +12,7 @@ public class RetrofitConfig {
         this.retrofit = new Retrofit.Builder()
 
                 //Nao estabelece conexão com localhost (127.0.0.1), trocar "192.168.1.7" pelo ip local da maquina
-                .baseUrl("http://192.168.1.7:8080/api/v1.0/")
+                .baseUrl("http://192.168.1.5:8080/api/v1.0/")
 
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
